@@ -62,15 +62,15 @@ CREATE TABLE Asignacion (
 
 -- Inserción de datos en la tabla Usuarios
 INSERT INTO Usuarios (nombre, email, contrasena, rol) VALUES
-('Juan Pérez', 'juan@example.com', 'password1', 'admin'),
-('María López', 'maria@example.com', 'password2', 'user'),
-('Carlos Gómez', 'carlos@example.com', 'password3', 'user');
+('Juan Perez', 'juan@example.com', 'password1', 'admin'),
+('Maria Lopez', 'maria@example.com', 'password2', 'user'),
+('Carlos Gomez', 'carlos@example.com', 'password3', 'user');
 
 -- Inserción de datos en la tabla Proyecto
 INSERT INTO Proyecto (id_proyecto, nombre, descripcion, fecha_inicio, fecha_fin, estado) VALUES
-(1, 'Proyecto A', 'Descripción del Proyecto A', '2023-01-01', '2023-12-31', 'En progreso'),
-(2, 'Proyecto B', 'Descripción del Proyecto B', '2023-02-01', '2023-12-31', 'Pendiente'),
-(3, 'Proyecto C', 'Descripción del Proyecto C', '2023-03-01', '2023-12-31', 'Completado');
+(1, 'Proyecto A', 'Descripcion del Proyecto A', '2023-01-01', '2023-12-31', 'En progreso'),
+(2, 'Proyecto B', 'Descripcion del Proyecto B', '2023-02-01', '2023-12-31', 'Pendiente'),
+(3, 'Proyecto C', 'Descripcion del Proyecto C', '2023-03-01', '2023-12-31', 'Completado');
 
 -- Inserción de datos en la tabla Cliente
 INSERT INTO Cliente (nombre, email, telefono, direccion) VALUES
@@ -80,10 +80,10 @@ INSERT INTO Cliente (nombre, email, telefono, direccion) VALUES
 
 -- Inserción de datos en la tabla Tarea
 INSERT INTO Tarea (id_proyecto, titulo, descripcion, estado, fecha_inicio, fecha_fin, asignado_a) VALUES
-(1, 'Tarea 1 del Proyecto A', 'Descripción de la Tarea 1 del Proyecto A', 'Pendiente', '2023-01-01', '2023-02-01', 1),
-(1, 'Tarea 2 del Proyecto A', 'Descripción de la Tarea 2 del Proyecto A', 'En progreso', '2023-01-15', '2023-03-01', 2),
-(2, 'Tarea 1 del Proyecto B', 'Descripción de la Tarea 1 del Proyecto B', 'Completada', '2023-02-01', '2023-02-15', 3),
-(3, 'Tarea 1 del Proyecto C', 'Descripción de la Tarea 1 del Proyecto C', 'Pendiente', '2023-03-01', '2023-04-01', 1);
+(1, 'Tarea 1 del Proyecto A', 'Descripcion de la Tarea 1 del Proyecto A', 'Pendiente', '2023-01-01', '2023-02-01', 1),
+(1, 'Tarea 2 del Proyecto A', 'Descripcion de la Tarea 2 del Proyecto A', 'En progreso', '2023-01-15', '2023-03-01', 2),
+(2, 'Tarea 1 del Proyecto B', 'Descripcion de la Tarea 1 del Proyecto B', 'Completada', '2023-02-01', '2023-02-15', 3),
+(3, 'Tarea 1 del Proyecto C', 'Descripcion de la Tarea 1 del Proyecto C', 'Pendiente', '2023-03-01', '2023-04-01', 1);
 
 -- Inserción de datos en la tabla Asignacion
 INSERT INTO Asignacion (id_proyecto, id_usuario) VALUES

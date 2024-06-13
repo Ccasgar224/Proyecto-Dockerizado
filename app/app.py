@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, Blueprint, jsonify, request
+from flask import Flask, render_template, redirect, url_for, flash, Blueprint, jsonify, request, session
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
@@ -102,7 +102,6 @@ def index():
     metadata.reflect(bind=db_session.bind)
     tables = [table_name for table_name in metadata.tables.keys() if table_name != 'user']  # filtrar las tablas y omitir 'User'
     return render_template('index.html', current_user=user_name, tables=tables)
-
 
 # Swagger UI
 SWAGGER_URL = '/swagger'

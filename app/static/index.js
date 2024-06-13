@@ -25,18 +25,3 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/';
     }
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    const logoutButton = document.getElementById('logout-button');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', function () {
-            cerrarSesion();
-        });
-    }
-});
-
-function cerrarSesion() {
-    localStorage.removeItem('access_token');
-    window.location.href = '/';
-
-}
