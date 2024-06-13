@@ -13,7 +13,7 @@ services:
       - SECRET_KEY=mysecretkey
     depends_on:
       - db
-    command: ["bash", "-c", "./wait-for-it/wait-for-it.sh db:3306 -- python app.py"]
+    command: ["bash", "-c", "python app.py"]
 
   db:
     image: mysql:8.0
