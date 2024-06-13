@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='login.js') }}"></script>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        {% if current_user %}
+        <h1 class="display-4">Bienvenido/a, {{ current_user }} a la API REST Automática</h1>
+        {% endif %}
+        <p class="lead">Con esta aplicación podrás manejar tu base de datos fácilmente.</p>
+        <hr class="my-4">
+        <h2 class="text-center">Tablas disponibles</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card-deck">
+                {% for table in tables %}
+                <div class="card mb-3 text-center" style="background-color: #f8f9fa;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ table }}</h5>
+                        <a href="{{ url_for(table + '_crud.ver_tablas', table_name=table) }}" class="btn btn-primary custom-btn mx-auto" style="background-color: #343a40; border-color: #343a40;">Ver tabla</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
