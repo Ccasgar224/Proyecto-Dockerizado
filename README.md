@@ -6,7 +6,6 @@ Este proyecto es una aplicación web que utiliza Docker y Docker Compose para su
 ## Requisitos
 
 - Docker
-- Docker Compose
 
 ## Instalación
 
@@ -20,6 +19,12 @@ Este proyecto es una aplicación web que utiliza Docker y Docker Compose para su
 
    ```sh
    docker-compose up --build -d
+
+2. Comprobación:
+
+   Una vez esté listo el build de los contenedores para ver la aplicación puedes acceder en el navegador escribiendo:
+   ```sh
+   localhost:5000
    
 3. Uso y características:
 
