@@ -13,7 +13,7 @@ def generar_swagger(app, db_session):
     metadata.reflect(bind=engine)
 
     for table_name in metadata.tables.keys():
-        paths[f'/asignacion/{table_name}'] = {
+        paths[f'/Asignacion/{table_name}'] = {
             'get': {
                 'summary': f'Recuperar todos los registros de {table_name}',
                 'responses': {
@@ -79,7 +79,7 @@ def generar_swagger(app, db_session):
         propiedades = {}
         for column in table.columns:
             tipo_columna = str(column.type)
-            formato_propiedad = None  # Inicializar formato_propiedad a None
+            formato_propiedad = None  
             if tipo_columna.startswith('VARCHAR'):
                 tipo_propiedad = 'string'
             elif tipo_columna.startswith('INTEGER'):

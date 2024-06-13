@@ -17,10 +17,10 @@
         <div class="col-md-12">
             <div class="card-deck">
                 {% for table in tables %}
-                <div class="card mb-3 text-center" style="background-color: #f8f9fa;">
+                <div class="card mb-3 text-center">
                     <div class="card-body">
                         <h5 class="card-title">{{ table }}</h5>
-                        <a href="{{ url_for(table + '_crud.ver_tablas', table_name=table) }}" class="btn btn-primary custom-btn mx-auto" style="background-color: #343a40; border-color: #343a40;">Ver tabla</a>
+                        <a href="{{ url_for(table + '_crud.ver_tablas', table_name=table) }}" class="btn btn-dark custom-btn mx-auto">Ver tabla</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -29,4 +29,3 @@
     </div>
 </div>
 {% endblock %}
-

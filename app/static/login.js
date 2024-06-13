@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => {
             if (typeof data === 'string') { // Si es HTML
-                document.body.innerHTML = data; // Insertar el HTML
+                document.body.innerHTML = data; 
             } else if (data.access_token) { // Si es JSON y tiene el token
                 localStorage.setItem('access_token', data.access_token);
                 // Redirige al index y añade el token en el header
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .then(response => {
                     if (response.ok) {
-                        return response.text(); // Asumiendo que estás devolviendo HTML
+                        return response.text(); 
                     } else {
                         throw new Error(response.statusText);
                     }

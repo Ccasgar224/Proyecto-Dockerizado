@@ -1,6 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, flash, Blueprint, jsonify, request, make_response
+from flask import Flask, render_template, redirect, url_for, flash, Blueprint, jsonify, request
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from flask_migrate import Migrate
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
@@ -11,7 +10,6 @@ from database import db_session, init_db
 from generate_api import guardar_specs_swagger
 from routes import crea_rutas
 from forms import FormularioLogin, FormularioRegistro
-from functools import wraps
 import os
 
 app = Flask(__name__)
@@ -50,11 +48,13 @@ class User(db.Model):
 def create_tables():
     db.create_all()
 
+# Errores flash
 def flash_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
             flash(f'{getattr(form, field).label.text}: {error}', 'danger')
 
+# Ruta para el registro
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
     form = FormularioRegistro()
@@ -78,6 +78,7 @@ def registro():
             flash_errors(form)
     return render_template('registro.html', form=form)
 
+# Ruta para el login
 @app.route('/', methods=['GET', 'POST'])
 def login():
     form = FormularioLogin()

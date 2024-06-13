@@ -14,17 +14,17 @@
     {% endif %}
     <div class="row mb-4">
         <div class="col-md-12">
-            <form action="{{ url_for('.buscar', table_name=table_name) }}" method="GET" class="form-inline justify-content-center mb-2" style="width: 100%;">
-                <input type="text" name="search_query" class="form-control form-control-sm mr-2" placeholder="Buscar en todas las columnas..." value="{{ search_term or '' }}" style="width: 80%;">
-                <button type="submit" class="btn btn-primary custom-btn btn-sm" style="background-color: #343a40; border-color: #343a40;">Buscar</button>
+            <form action="{{ url_for('.buscar', table_name=table_name) }}" method="GET" class="form-inline justify-content-center mb-2 w-100">
+                <input type="text" name="search_query" class="form-control form-control-sm mr-2 w-80" placeholder="Buscar en todas las columnas..." value="{{ search_term or '' }}">
+                <button type="submit" class="btn btn-dark btn-sm">Buscar</button>
             </form>
-            <form action="{{ url_for('.buscar', table_name=table_name) }}" method="GET" class="form-inline justify-content-center" style="width: 100%;">
+            <form action="{{ url_for('.buscar', table_name=table_name) }}" method="GET" class="form-inline justify-content-center w-100">
                 {% for column in columns %}
-                <div class="form-group mr-2" style="flex: 1;">
+                <div class="form-group mr-2 flex-fill">
                     <input type="text" name="{{ column }}" class="form-control form-control-sm" placeholder="{{ column }}" value="{{ filters[column] if filters and filters[column] is not none else '' }}">
                 </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary custom-btn btn-sm" style="background-color: #343a40; border-color: #343a40;">Filtrar</button>
+                <button type="submit" class="btn btn-dark btn-sm">Filtrar</button>
             </form>
         </div>
     </div>
@@ -45,17 +45,11 @@
                 <td>{{ row[column] }}</td>
                 {% endfor %}
                 <td class="text-center">
-                    <div class="d-inline-block">
-                        <a href="{{ url_for(table_name + '_crud.editar', id=row[primary_key_column], table_name=table_name) }}" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Editar</a>
-                    </div>
-                
-                    <div class="d-inline-block">
-                        <form action="{{ url_for(table_name + '_crud.eliminar', id=row[primary_key_column], table_name=table_name) }}" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
-                        </form>
-                    </div>
+                    <a href="{{ url_for(table_name + '_crud.editar', id=row[primary_key_column], table_name=table_name) }}" class="btn btn-primary btn-sm d-inline-block"><i class="fas fa-pencil-alt"></i> Editar</a>
+                    <form action="{{ url_for(table_name + '_crud.eliminar', id=row[primary_key_column], table_name=table_name) }}" method="post" class="d-inline-block">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </form>
                 </td>
-                
             </tr>
             {% endfor %}
         </tbody>
