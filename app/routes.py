@@ -82,9 +82,9 @@ def crea_rutas(app, db_session):
                     ]
                     query = query.where(and_(*filter_clauses))
                 
-                result = db_session.execute(query).fetchall()
+                result = db_session.execute(query).fetchall() #Ejecuta la consulta y lo almacena en result (el resultado)
                 columns = table.columns.keys()
-                rows = [dict(row._mapping) for row in result]
+                rows = [dict(row._mapping) for row in result] # Convierto a dict para transforlo a un formato accesible para la plantilla
                 return render_template(
                     'table.html', 
                     table_name=table_name, 

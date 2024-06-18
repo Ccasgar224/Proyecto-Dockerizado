@@ -50,9 +50,9 @@ def create_tables():
 
 # Errores flash
 def flash_errors(form):
-    for field, errors in form.errors.items():
-        for error in errors:
-            flash(f'{getattr(form, field).label.text}: {error}', 'danger')
+    for field, errors in form.errors.items(): #Itera dobre el diccionario form.items 
+        for error in errors: # Para cada campo itera sobre la lista de errores
+            flash(f'{getattr(form, field).label.text}: {error}', 'danger') #Obtiene el objeto del campo con el texto y construye el mensaje de error
 
 # Ruta para el registro
 @app.route('/registro', methods=['GET', 'POST'])
@@ -60,13 +60,13 @@ def registro():
     form = FormularioRegistro()
     if request.method == 'POST':
         if form.validate():
-            existing_user = User.query.filter_by(email=form.email.data).first()
+            existing_user = User.query.filter_by(email=form.email.data).first() #Comprueba que el email que ha intentado registrar existe o no
             if existing_user:
                 flash('Este correo electrónico ya está en uso.', 'danger')
             else:
                 try:
-                    hashed_password = generate_password_hash(form.password.data)
-                    new_user = User(nombre=form.nombre.data, email=form.email.data, password=hashed_password)
+                    hashed_password = generate_password_hash(form.password.data) #Cifra la contraseña 
+                    new_user = User(nombre=form.nombre.data, email=form.email.data, password=hashed_password) #Crea un nuevo objeto User
                     db.session.add(new_user)
                     db.session.commit()
                     flash('Registrado con éxito!', 'success')
@@ -98,8 +98,8 @@ def login():
 def index():
     current_user = get_jwt_identity()
     user_name = current_user.get('name') if current_user else None
-    metadata = MetaData()
-    metadata.reflect(bind=db_session.bind)
+    metadata = MetaData() #Clase de SQLAlchemy que representa la estructura de la base de datos
+    metadata.reflect(bind=db_session.bind) # "Llena" el objeto metadata con las tablas de la BD que está conectada a db_session
     tables = [table_name for table_name in metadata.tables.keys() if table_name != 'user']  # filtrar las tablas y omitir 'User'
     return render_template('index.html', current_user=user_name, tables=tables)
 
@@ -109,5 +109,6 @@ API_URL = '/static/swagger.json'
 swaggerui_blueprint = get_swaggerui_blueprint(SWAGGER_URL, API_URL, config={'app_name': "API generada automáticamente"})
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
+#Asegura que solo se ejecute la app si esta script se ejecuta directamente e inicia la app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
