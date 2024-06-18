@@ -14,10 +14,8 @@ Este proyecto es una aplicación web que utiliza Docker y Docker Compose para su
    ```sh
    git clone https://github.com/Ccasgar224/Proyecto-Dockerizado
    cd Proyecto-Dockerizado
-   ```sh
-   cd Proyecto-Dockerizado
 
-2. Ejecución:
+3. Ejecución:
 
    ```sh
    docker-compose up --build -d
